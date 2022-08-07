@@ -1,5 +1,5 @@
 const { UserInputError } = require('apollo-server-express');
-const { getDb, getNextSequence } = require('./db.js');
+const { getDb, getNextSequence } = require('./db');
 
 async function list() {
   const db = getDb();
@@ -24,7 +24,7 @@ async function add(_, { issue }) {
   const db = getDb();
   validate(issue);
 
-  const newIssue = Object.assign({}, issue);
+  const newIssue = { ...issue };
   newIssue.created = new Date();
   newIssue.id = await getNextSequence('issues');
 
