@@ -1,41 +1,7 @@
-const path = require('path');
-const fs = require('fs');
-const { ApolloServer } = require('apollo-server-express');
-//----------------------------
 require('dotenv').config();
 const express = require('express');
 const { connectToDb } = require('./db');
 const { installHandler } = require('./api_handler');
-
-//----------------------------
-const GraphQLDate = require('./graphql_date');
-const about = require('./about');
-const issue = require('./issue');
-
-const resolvers = {
-  Query: {
-    about: about.getMessage,
-    issueList: issue.list,
-  },
-  Mutation: {
-    setAboutMessage: about.setMessage,
-    issueAdd: issue.add,
-  },
-  GraphQLDate,
-};
-
-const server = new ApolloServer({
-  // typeDefs: fs.readFileSync('api/schema.graphql', 'utf-8'),
-  typeDefs: fs.readFileSync(path.join(process.cwd(), 'api', 'schema.graphql'), 'utf-8'),
-  // typeDefs: readFileSync( path.join(process.cwd(), 'api' , 'schema.graphql') , 'utf8'),
-  resolvers,
-  formatError: (error) => {
-    console.log(error);
-    return error;
-  },
-});
-
-//----------------------------
 
 const port = process.env.API_SERVER_PORT || 3000;
 
@@ -52,5 +18,3 @@ const app = express();
     console.log('ERROR:', err);
   }
 }());
-
-export default server;
