@@ -3,14 +3,13 @@ const express = require('express');
 const { connectToDb } = require('./db');
 const { installHandler } = require('./api_handler');
 
-const app = express();
-
-
 const port = process.env.API_SERVER_PORT || 3000;
+
+const app = express();
 
 (async function start() {
   try {
-    await installHandler(app);
+    await installHandler(app); // !!!!
     await connectToDb();
     app.listen(port, () => {
       console.log(`API server started on port ${port}`);
@@ -19,3 +18,5 @@ const port = process.env.API_SERVER_PORT || 3000;
     console.log('ERROR:', err);
   }
 }());
+
+export default app;
