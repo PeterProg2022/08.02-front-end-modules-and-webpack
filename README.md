@@ -1,7 +1,3 @@
-# Pro MERN Stack - 2nd Edition
+npx webpack ./public/App.js -o public  --mode development
 
-You are browsing the source code at the end of one of the sections in the book.
-
-The project's README which contains the list of all chapters, sections
-their sources and other useful information can be found in the
-[master branch](https://github.com/vasansr/pro-mern-stack-2).
+bundle heißt main,js ... in index.html anpassen

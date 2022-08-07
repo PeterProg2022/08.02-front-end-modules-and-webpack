@@ -3,6 +3,7 @@
 /* eslint "react/jsx-no-undef": "off" */
 /* eslint "react/no-multi-comp": "off" */
 
+// eslint-disable-next-line max-classes-per-file
 import graphQLFetch from './graphQLFetch.js';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -29,7 +30,7 @@ function IssueRow({ issue }) {
 }
 
 function IssueTable({ issues }) {
-  const issueRows = issues.map(issue => (
+  const issueRows = issues.map((issue) => (
     <IssueRow key={issue.id} issue={issue} />
   ));
 
@@ -128,14 +129,14 @@ class IssueList extends React.Component {
   render() {
     const { issues } = this.state;
     return (
-      <React.Fragment>
+      <>
         <h1>Issue Tracker</h1>
         <IssueFilter />
         <hr />
         <IssueTable issues={issues} />
         <hr />
         <IssueAdd createIssue={this.createIssue} />
-      </React.Fragment>
+      </>
     );
   }
 }
